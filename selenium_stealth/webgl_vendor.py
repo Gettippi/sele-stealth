@@ -1,6 +1,7 @@
 from pathlib import Path
 from .wrapper import evaluateOnNewDocument
 from selenium.webdriver import Chrome as Driver
+from patch import path
 
 
 def webgl_vendor_override(
@@ -10,7 +11,7 @@ def webgl_vendor_override(
     **kwargs
 ) -> None:
     evaluateOnNewDocument(
-        driver, Path(__file__).parent.joinpath("js/webgl.vendor.js").read_text(),
+        driver, path.joinpath("js/webgl.vendor.js").read_text(),
         webgl_vendor,
         renderer,
     )
